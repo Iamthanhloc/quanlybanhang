@@ -102,10 +102,10 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtManv" linkSize="1" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="txtDiachi" linkSize="1" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
-                              <Component id="jdcNgaysinh1" linkSize="1" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="txtManv2" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtMaHD" linkSize="1" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtManv" linkSize="1" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="txtTennv" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtNgayban" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -127,18 +127,18 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="txtManv1" linkSize="1" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="txtDiachi1" linkSize="1" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                                      <Component id="txtMaKH" linkSize="1" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="txtDiachi" linkSize="1" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="cboGioitinh" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jdcNgaysinh" linkSize="1" alignment="1" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <Component id="txtManv3" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="txttenKH" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txtManv4" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtSDT" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtNgaysinh" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,23 +150,23 @@
                       <Group type="102" attributes="0">
                           <EmptySpace pref="33" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtManv" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMaHD" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbltendangnhap1" linkSize="4" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel4" linkSize="4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jdcNgaysinh1" linkSize="2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtDiachi" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNgayban" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtManv" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbltendangnhap3" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="38" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtManv2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTennv" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
@@ -174,15 +174,15 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtManv1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMaKH" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtManv3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txttenKH" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtDiachi1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtDiachi" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbltendangnhap4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -191,12 +191,12 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtManv4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSDT" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jdcNgaysinh" linkSize="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbltendangnhap2" linkSize="4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbltendangnhap2" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNgaysinh" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -224,14 +224,12 @@
             <Property name="text" type="java.lang.String" value="Gi&#x1edb;i t&#xed;nh"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDiachi">
+        <Component class="javax.swing.JTextField" name="txtManv">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jdcNgaysinh">
         </Component>
         <Component class="javax.swing.JComboBox" name="cboGioitinh">
           <Properties>
@@ -282,7 +280,7 @@
             <Property name="text" type="java.lang.String" value="Ng&#xe0;y b&#xe1;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtManv">
+        <Component class="javax.swing.JTextField" name="txtMaHD">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -313,14 +311,14 @@
             <Property name="text" type="java.lang.String" value="T&#xea;n kh&#xe1;ch h&#xe0;ng"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtManv1">
+        <Component class="javax.swing.JTextField" name="txtMaKH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDiachi1">
+        <Component class="javax.swing.JTextField" name="txtDiachi">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -343,23 +341,35 @@
             <Property name="text" type="java.lang.String" value="M&#xe3; kh&#xe1;ch h&#xe0;ng"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jdcNgaysinh1">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtManv2">
+        <Component class="javax.swing.JTextField" name="txtTennv">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtManv3">
+        <Component class="javax.swing.JTextField" name="txttenKH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtManv4">
+        <Component class="javax.swing.JTextField" name="txtSDT">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNgaysinh">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNgayban">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -386,20 +396,20 @@
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtTaikhoan1" min="-2" pref="200" max="-2" attributes="0"/>
-                      <Component id="txtTaikhoan6" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="txtMasp" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="txtSoluong" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="45" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel9" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtTaikhoan5" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtDongia" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel11" linkSize="6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtTaikhoan7" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtTensp" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
@@ -408,7 +418,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="lbltendangnhap7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtTaikhoan2" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="txtThanhtien" min="-2" pref="200" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
               </Group>
               <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
@@ -427,7 +437,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txtTaikhoan3" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="txtTongtien" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -453,27 +463,27 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbltendangnhap6" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTaikhoan1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMasp" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel11" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTaikhoan7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTensp" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTaikhoan5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTaikhoan6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDongia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSoluong" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtTaikhoan2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtThanhtien" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbltendangnhap7" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="127" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtTaikhoan3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTongtien" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbltendangnhap8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -495,7 +505,7 @@
             <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin s&#x1ea3;n ph&#x1ea9;m"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTaikhoan2">
+        <Component class="javax.swing.JTextField" name="txtThanhtien">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -526,7 +536,7 @@
             <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1b0;&#x1ee3;ng"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTaikhoan1">
+        <Component class="javax.swing.JTextField" name="txtMasp">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -559,7 +569,7 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="6">
+                  <Table columnCount="5" rowCount="0">
                     <Column editable="false" title="M&#xe3; s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
                     <Column editable="false" title="T&#xea;n s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
                     <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
@@ -574,7 +584,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtTaikhoan3">
+        <Component class="javax.swing.JTextField" name="txtTongtien">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -620,6 +630,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
@@ -629,21 +642,21 @@
             <Property name="text" type="java.lang.String" value="In "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTaikhoan5">
+        <Component class="javax.swing.JTextField" name="txtDongia">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTaikhoan6">
+        <Component class="javax.swing.JTextField" name="txtSoluong">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTaikhoan7">
+        <Component class="javax.swing.JTextField" name="txtTensp">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>

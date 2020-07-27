@@ -5,6 +5,9 @@
  */
 package TrangFrame;
 
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nguyễn Thành lộc
@@ -40,7 +43,6 @@ public class Dangki extends javax.swing.JInternalFrame {
         lbltendangnhap2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtDiachi = new javax.swing.JTextField();
-        jdcNgaysinh = new com.toedter.calendar.JDateChooser();
         cboGioitinh = new javax.swing.JComboBox<>();
         lbltendangnhap3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -54,8 +56,9 @@ public class Dangki extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         txtnhaplaimk = new javax.swing.JPasswordField();
         btndangkymoi = new javax.swing.JButton();
-        txtManv1 = new javax.swing.JTextField();
-        txtManv2 = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
+        txtHoten = new javax.swing.JTextField();
+        txtNgaysinh = new javax.swing.JTextField();
 
         lbltendangnhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbltendangnhap.setText("Tên đăng nhập");
@@ -140,10 +143,17 @@ public class Dangki extends javax.swing.JInternalFrame {
 
         btndangkymoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btndangkymoi.setText("Đăng ký");
+        btndangkymoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndangkymoiActionPerformed(evt);
+            }
+        });
 
-        txtManv1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtSDT.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        txtManv2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtHoten.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        txtNgaysinh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,7 +181,6 @@ public class Dangki extends javax.swing.JInternalFrame {
                     .addComponent(txtTaikhoanmoi, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                     .addComponent(txtDiachi, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                     .addComponent(txtManv, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                    .addComponent(jdcNgaysinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cboGioitinh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtMatkhaumoi)
                     .addComponent(txtnhaplaimk)
@@ -180,12 +189,13 @@ public class Dangki extends javax.swing.JInternalFrame {
                         .addComponent(rbtQuanly, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rbtNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtManv1)
-                    .addComponent(txtManv2))
+                    .addComponent(txtSDT)
+                    .addComponent(txtHoten)
+                    .addComponent(txtNgaysinh))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cboGioitinh, jdcNgaysinh, txtDiachi, txtManv});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cboGioitinh, txtDiachi, txtManv});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, lbltendangnhap1, lbltendangnhap2, lbltendangnhap3, lbltendangnhap4, rbtQuanly});
 
@@ -199,8 +209,10 @@ public class Dangki extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbltendangnhap2)
-                        .addGap(23, 23, 23))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbltendangnhap2)
+                            .addComponent(txtNgaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtManv, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,10 +220,8 @@ public class Dangki extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtManv2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jdcNgaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                            .addComponent(txtHoten, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(74, 74, 74)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboGioitinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -222,7 +232,7 @@ public class Dangki extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(txtManv1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtQuanly)
@@ -242,10 +252,10 @@ public class Dangki extends javax.swing.JInternalFrame {
                     .addComponent(jLabel9))
                 .addGap(35, 35, 35)
                 .addComponent(btndangkymoi, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboGioitinh, jdcNgaysinh, txtDiachi, txtManv});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboGioitinh, txtDiachi, txtManv});
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, lbltendangnhap1, lbltendangnhap2, lbltendangnhap3, lbltendangnhap4, rbtNhanvien, rbtQuanly});
 
@@ -262,6 +272,10 @@ public class Dangki extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnhaplaimkActionPerformed
 
+    private void btndangkymoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndangkymoiActionPerformed
+        checkNull();
+    }//GEN-LAST:event_btndangkymoiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btndangkymoi;
@@ -276,7 +290,6 @@ public class Dangki extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
-    private com.toedter.calendar.JDateChooser jdcNgaysinh;
     private javax.swing.JLabel lbltendangnhap;
     private javax.swing.JLabel lbltendangnhap1;
     private javax.swing.JLabel lbltendangnhap2;
@@ -285,13 +298,68 @@ public class Dangki extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbtNhanvien;
     private javax.swing.JRadioButton rbtQuanly;
     private javax.swing.JTextField txtDiachi;
+    private javax.swing.JTextField txtHoten;
     private javax.swing.JTextField txtManv;
-    private javax.swing.JTextField txtManv1;
-    private javax.swing.JTextField txtManv2;
     private javax.swing.JPasswordField txtMatkhau;
     private javax.swing.JPasswordField txtMatkhaumoi;
+    private javax.swing.JTextField txtNgaysinh;
+    private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTaikhoan;
     private javax.swing.JTextField txtTaikhoanmoi;
     private javax.swing.JPasswordField txtnhaplaimk;
     // End of variables declaration//GEN-END:variables
+public void checkNull() {
+        try {
+            if (txtManv.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Hãy nhập vào mã nhân viên");
+                txtManv.requestFocus();
+                return;
+            }
+            if (txtHoten.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Nhập vào họ và tên");
+                txtHoten.requestFocus();
+                return;
+            }
+            if (txtNgaysinh.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa nhập ngày sinh");
+                txtNgaysinh.requestFocus();
+                return;
+            }
+            if (txtDiachi.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Nhập vào địa chỉ");
+                txtDiachi.requestFocus();
+                return;
+            }
+            if (txtSDT.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Nhập vào số điện thoại");
+                txtSDT.requestFocus();
+                return;
+            } else if (txtSDT.getText().length() < 10 || txtSDT.getText().length() > 10) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại phải có 10 số");
+                txtSDT.requestFocus();
+                return;
+            }
+            if (txtTaikhoanmoi.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Nhập vào tài khoản của bạn");
+                txtTaikhoanmoi.requestFocus();
+                return;
+            }
+            if (txtMatkhaumoi.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Nhập vào mật khẩu của bạn");
+                txtMatkhaumoi.requestFocus();
+                return;
+            }
+            if (txtnhaplaimk.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa nhập lại mật khẩu");
+                txtnhaplaimk.requestFocus();
+                return;
+            } else if (!txtnhaplaimk.getText().equals(txtMatkhaumoi.getText())) {
+                JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp !!");
+                txtnhaplaimk.requestFocus();
+                return;
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Lỗi!!!");
+        }
+    }
 }

@@ -5,6 +5,8 @@
  */
 package TrangFrame;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nguyễn Thành lộc
@@ -35,9 +37,9 @@ public class QuenMK extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtTaikhoan1 = new javax.swing.JTextField();
-        btnDangky = new javax.swing.JButton();
-        btnDangnhap = new javax.swing.JButton();
+        txtmanv = new javax.swing.JTextField();
+        btnHuy = new javax.swing.JButton();
+        btnXacnhan = new javax.swing.JButton();
         txtTaikhoan2 = new javax.swing.JTextField();
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -70,18 +72,18 @@ public class QuenMK extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Tên đăng nhập");
 
-        txtTaikhoan1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtmanv.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        btnDangky.setBackground(new java.awt.Color(255, 204, 204));
-        btnDangky.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        btnDangky.setText("Hủy");
+        btnHuy.setBackground(new java.awt.Color(255, 204, 204));
+        btnHuy.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        btnHuy.setText("Hủy");
 
-        btnDangnhap.setBackground(new java.awt.Color(204, 255, 204));
-        btnDangnhap.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        btnDangnhap.setText("Xác nhận");
-        btnDangnhap.addActionListener(new java.awt.event.ActionListener() {
+        btnXacnhan.setBackground(new java.awt.Color(204, 255, 204));
+        btnXacnhan.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        btnXacnhan.setText("Xác nhận");
+        btnXacnhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangnhapActionPerformed(evt);
+                btnXacnhanActionPerformed(evt);
             }
         });
 
@@ -93,9 +95,9 @@ public class QuenMK extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(91, 91, 91)
-                .addComponent(btnDangnhap)
+                .addComponent(btnXacnhan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(btnDangky, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91))
             .addGroup(layout.createSequentialGroup()
                 .addGap(116, 116, 116)
@@ -108,12 +110,12 @@ public class QuenMK extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTaikhoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTaikhoan2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDangky, btnDangnhap});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHuy, btnXacnhan});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +124,7 @@ public class QuenMK extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTaikhoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -130,12 +132,12 @@ public class QuenMK extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDangnhap)
-                    .addComponent(btnDangky, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnXacnhan)
+                    .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDangky, btnDangnhap});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnHuy, btnXacnhan});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,16 +146,16 @@ public class QuenMK extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboGhinhoActionPerformed
 
-    private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
+    private void btnXacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacnhanActionPerformed
         DoiMK doimk = new DoiMK();
         desktopIcon.add(doimk);
         doimk.setVisible(true);
-    }//GEN-LAST:event_btnDangnhapActionPerformed
+    }//GEN-LAST:event_btnXacnhanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangky;
-    private javax.swing.JButton btnDangnhap;
+    private javax.swing.JButton btnHuy;
+    private javax.swing.JButton btnXacnhan;
     private javax.swing.JCheckBox cboGhinho;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -162,7 +164,23 @@ public class QuenMK extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField txtMatkhau;
     private javax.swing.JTextField txtTaikhoan;
-    private javax.swing.JTextField txtTaikhoan1;
     private javax.swing.JTextField txtTaikhoan2;
+    private javax.swing.JTextField txtmanv;
     // End of variables declaration//GEN-END:variables
+public boolean check(){
+    try {
+        if(txtmanv.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mã Nhân Viên");
+            txtmanv.requestFocus();
+            return true;
+        }
+        if(txtTaikhoan2.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên đăng nhập");
+            txtTaikhoan2.requestFocus();
+            return true;
+        }
+    } catch (Exception e) {
+    }
+    return false;
+}
 }

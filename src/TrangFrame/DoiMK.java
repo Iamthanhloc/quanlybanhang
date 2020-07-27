@@ -5,6 +5,9 @@
  */
 package TrangFrame;
 
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nguyễn Thành lộc
@@ -130,4 +133,25 @@ public class DoiMK extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField txtTaomk;
     private javax.swing.JPasswordField txtTaomk1;
     // End of variables declaration//GEN-END:variables
+public boolean check() {
+        try {
+            if (txtTaomk1.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa nhập mật khẩu mới");
+                txtTaomk1.requestFocus();
+                return true;
+            }
+            if (txtTaomk.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa nhập lại mật khẩu");
+                txtTaomk.requestFocus();
+                return true;
+            } else if (!txtTaomk.getText().equals(txtTaomk1.getText())) {
+                JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp !!");
+                txtTaomk.requestFocus();
+                return true;
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Lỗi!!");
+        }
+        return false;
+    }
 }

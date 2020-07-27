@@ -5,6 +5,7 @@
  */
 package TrangFrame;
 
+import java.awt.HeadlessException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JOptionPane;
@@ -180,7 +181,13 @@ public class Dangnhap extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lblQuenMouseDragged
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
+        try {
+            check();
         JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Lỗi !!");
+        }
+
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
     private void btnDangkyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangkyActionPerformed
@@ -204,4 +211,22 @@ public class Dangnhap extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField txtMatkhau;
     private javax.swing.JTextField txtTaikhoan;
     // End of variables declaration//GEN-END:variables
+public boolean check() {
+        try {
+            if (txtTaikhoan.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa nhập tài khoản");
+                txtTaikhoan.requestFocus();
+                return true;
+            }
+            if (txtMatkhau.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa nhập mật khẩu");
+                txtMatkhau.requestFocus();
+                return true;
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Lỗi!!");
+            return true;
+        }
+        return false;
+    }
 }
