@@ -6,7 +6,17 @@
 package TrangFrame;
 
 import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +29,88 @@ public class Nhanvien extends javax.swing.JInternalFrame {
      */
     public Nhanvien() {
         initComponents();
+     this.ListNV = new ArrayList<>();
+
+        this.conn = this.getConnection();
+        this.ListNV = this.fetchlist();
+        this.RenderTable(ListNV);
+
+    
+    }
+    ArrayList<QLNhanvien> ListNV;
+    DefaultTableModel model;
+
+    int index;
+
+    protected String dbUsername, dbPassword;
+
+    Connection conn;
+
+    protected Connection getConnection() {
+        Connection conn = null;
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyBanHang";
+
+            String dbUsername = "sa", dbPassword = "Aa123";
+            conn = DriverManager.getConnection(url, dbUsername, dbPassword);
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conn;
+
     }
 
+    protected ArrayList<QLNhanvien> fetchlist() {
+        ArrayList<QLNhanvien> result = new ArrayList<>();
+
+        String query = "select * from NhanVien";
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                String manv = rs.getString("MaNV");
+                String tennv = rs.getString("TenNV");
+                Date Ngaysinh = rs.getDate("NgaySinh");
+
+                String gioitinh = rs.getString("Gioitinh");
+
+                String diachi = rs.getString("DiaChi");
+                int SDT = rs.getInt("SoDT");
+
+                result.add(new QLNhanvien(manv, tennv, diachi, SDT, Ngaysinh, gioitinh));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhanvien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+
+    }
+
+    public void RenderTable(ArrayList<QLNhanvien> data) {
+        model = (DefaultTableModel) this.tblQLnhanvien.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < data.size(); i++) {
+            QLNhanvien kh = data.get(i);
+            model.addRow(new Object[]{
+                kh.getMaNV(),
+                kh.getTenNV(),
+                kh.getDiaChi(),
+                kh.getSdt(),
+                kh.getNgaySinh(),
+                
+                kh.getGioiTinh()
+                
+            });
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,7 +136,7 @@ public class Nhanvien extends javax.swing.JInternalFrame {
         lbltendangnhap2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblQLnhanvien = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -68,6 +158,11 @@ public class Nhanvien extends javax.swing.JInternalFrame {
                 btnDangnhapActionPerformed(evt);
             }
         });
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Tên nhân viên");
@@ -106,7 +201,7 @@ public class Nhanvien extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Số điện thoại");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblQLnhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -114,7 +209,7 @@ public class Nhanvien extends javax.swing.JInternalFrame {
                 "Mã nhân viên", "Tên nhân viên", "Địa chỉ", "Số điện thoại", "Ngày sinh", "Giới tính", "Tên đăng nhập"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblQLnhanvien);
 
         jButton3.setIcon(new javax.swing.ImageIcon("C:\\JAVA\\JAVA3\\DuAnBanADIDAS\\Icon\\close.png")); // NOI18N
         jButton3.setText("Xóa");
@@ -285,12 +380,12 @@ public class Nhanvien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbltendangnhap10;
     private javax.swing.JLabel lbltendangnhap11;
     private javax.swing.JLabel lbltendangnhap2;
     private javax.swing.JLabel lbltendangnhap4;
     private javax.swing.JLabel lbltendangnhap5;
+    private javax.swing.JTable tblQLnhanvien;
     private javax.swing.JTextField txtDiachi;
     private javax.swing.JTextField txtHoten;
     private javax.swing.JTextField txtManv1;

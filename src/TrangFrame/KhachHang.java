@@ -6,7 +6,17 @@
 package TrangFrame;
 
 import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,8 +27,93 @@ public class KhachHang extends javax.swing.JInternalFrame {
     /**
      * Creates new form KhachHang
      */
+    
     public KhachHang() {
         initComponents();
+        
+        
+         this.ListKH = new ArrayList<>();
+
+        this.conn = this.getConnection();
+        this.ListKH = this.fetchlist();
+        this.RenderTable(ListKH);
+
+
+    }
+
+    ArrayList<QLKhachhang> ListKH;
+    DefaultTableModel model;
+
+    int index;
+
+    protected String dbUsername, dbPassword;
+
+    Connection conn;
+
+    protected Connection getConnection() {
+        Connection conn = null;
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyBanHang";
+
+            String dbUsername = "sa", dbPassword = "Aa123";
+            conn = DriverManager.getConnection(url, dbUsername, dbPassword);
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conn;
+
+    }
+
+    protected ArrayList<QLKhachhang> fetchlist() {
+        ArrayList<QLKhachhang> result = new ArrayList<>();
+
+        String query = "select * from khachhang";
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                String maKH = rs.getString("MaKH");
+                String tenKH = rs.getString("TenKH");
+                Date Ngaysinh = rs.getDate("NgaySinh");
+
+                String gioitinh = rs.getString("Gioitinh");
+
+                String diachi = rs.getString("DiaChi");
+                int SDT = rs.getInt("SoDT");
+
+                result.add(new QLKhachhang(maKH, tenKH, diachi, SDT, Ngaysinh, gioitinh));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+
+    }
+
+    public void RenderTable(ArrayList<QLKhachhang> data) {
+        model = (DefaultTableModel) this.tblkhachhang.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < data.size(); i++) {
+            QLKhachhang kh = data.get(i);
+            model.addRow(new Object[]{
+                kh.getMakh(),
+                kh.getTenkh(),
+                kh.getDiachi(),
+                kh.getSoDT(),
+                kh.getNgaysinh(),
+                
+                kh.getGioitinh()
+                
+            });
+
+        }
     }
 
     /**
@@ -43,7 +138,7 @@ public class KhachHang extends javax.swing.JInternalFrame {
         lbltendangnhap5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblkhachhang = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -51,6 +146,11 @@ public class KhachHang extends javax.swing.JInternalFrame {
         btnDangnhap = new javax.swing.JButton();
         lbltendangnhap9 = new javax.swing.JLabel();
         txtSDT = new javax.swing.JTextField();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         txttenkh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -94,7 +194,7 @@ public class KhachHang extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Khách Hàng");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblkhachhang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -102,7 +202,7 @@ public class KhachHang extends javax.swing.JInternalFrame {
                 "Mã khách hàng", "Tên khách hàng", "Địa chỉ", "Số điện thoại", "Ngày sinh", "Giới tính"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblkhachhang);
 
         jButton4.setIcon(new javax.swing.ImageIcon("C:\\JAVA\\JAVA3\\DuAnBanADIDAS\\Icon\\correct.png")); // NOI18N
         jButton4.setText("Lưu");
@@ -270,11 +370,11 @@ public class KhachHang extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbltendangnhap2;
     private javax.swing.JLabel lbltendangnhap4;
     private javax.swing.JLabel lbltendangnhap5;
     private javax.swing.JLabel lbltendangnhap9;
+    private javax.swing.JTable tblkhachhang;
     private javax.swing.JTextField txtNgaysinh;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtdiachi;

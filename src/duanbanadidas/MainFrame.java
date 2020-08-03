@@ -44,6 +44,7 @@ public class MainFrame extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jSpinField1 = new com.toedter.components.JSpinField();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jSpinField2 = new com.toedter.components.JSpinField();
         DeskTop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -167,6 +168,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem5);
 
+        jMenuItem7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\bill.png")); // NOI18N
         jMenuItem7.setText("Chi tiết hóa đơn");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,9 +179,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\staff.png")); // NOI18N
         jMenu4.setText("Nhân viên");
         jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\teamwork.png")); // NOI18N
         jMenuItem6.setText("Quản lý nhân viên");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,9 +194,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\customer.png")); // NOI18N
         jMenu5.setText("Khách hàng");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
+        jMenuItem8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\customer (1).png")); // NOI18N
         jMenuItem8.setText("Quản lý khách hàng");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,5 +353,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private com.toedter.components.JSpinField jSpinField1;
+    private com.toedter.components.JSpinField jSpinField2;
     // End of variables declaration//GEN-END:variables
 }

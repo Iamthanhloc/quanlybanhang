@@ -330,7 +330,8 @@ public void checkNull() {
                 txtDiachi.requestFocus();
                 return;
             }
-            if (txtSDT.getText().equals("")) {
+            try {
+                  if ( Integer.valueOf(txtSDT.getText()).equals("")) {
                 JOptionPane.showMessageDialog(this, "Nhập vào số điện thoại");
                 txtSDT.requestFocus();
                 return;
@@ -339,6 +340,10 @@ public void checkNull() {
                 txtSDT.requestFocus();
                 return;
             }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại phải là số");
+            }
+          
             if (txtTaikhoanmoi.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Nhập vào tài khoản của bạn");
                 txtTaikhoanmoi.requestFocus();

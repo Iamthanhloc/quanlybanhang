@@ -6,7 +6,16 @@
 package TrangFrame;
 
 import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,8 +26,87 @@ public class ChiTietHoaDon extends javax.swing.JInternalFrame {
     /**
      * Creates new form ChiTietHoaDon
      */
+    ArrayList<QLSP> ListSP;
+    DefaultTableModel model;
+
+    int index;
+
+    protected String dbUsername, dbPassword;
+
+    Connection conn;
+
     public ChiTietHoaDon() {
         initComponents();
+
+         this.ListSP = new ArrayList<>();
+
+        this.conn = this.getConnection();
+        this.ListSP = this.fetchlist();
+        this.RenderTable(ListSP);
+
+    }
+
+    protected Connection getConnection() {
+         Connection conn = null;
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyBanHang";
+
+            String dbUsername = "sa", dbPassword = "Aa123";
+            conn = DriverManager.getConnection(url, dbUsername, dbPassword);
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ChiTietHoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conn;
+
+    }
+
+    protected ArrayList<QLSP> fetchlist() {
+        ArrayList<QLSP> result = new ArrayList<>();
+
+        String query = "select * from Chitiethoadon";
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                String maHDCT = rs.getString("MaHDCT");
+                String maHD = rs.getString("MaHD");
+                String maSP = rs.getString("MaSP");
+
+                int soluong = rs.getInt("Soluong");
+
+                int dongia = rs.getInt("dongia");
+                int tongtien = rs.getInt("tongtien");
+
+                result.add(new QLSP(maHDCT, maHD, maSP, soluong, dongia, tongtien));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ChiTietHoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+
+    }
+    public void RenderTable(ArrayList<QLSP> data) {
+        model = (DefaultTableModel) this.tblChitietHD.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < data.size(); i++) {
+            QLSP sp = data.get(i);
+            model.addRow(new Object[]{
+                sp.getMaHDCT(),
+                sp.getMaHD(),
+                sp.getMaSP(),
+                sp.getSoLuong(),
+                sp.getDonGia(),
+                sp.getTongTien()
+            });
+
+        }
     }
 
     /**
@@ -35,7 +123,7 @@ public class ChiTietHoaDon extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         txtMasp = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblChitietHD = new javax.swing.JTable();
         txtMaHD = new javax.swing.JTextField();
         txtTaikhoan3 = new javax.swing.JTextField();
         lbltendangnhap8 = new javax.swing.JLabel();
@@ -55,6 +143,11 @@ public class ChiTietHoaDon extends javax.swing.JInternalFrame {
         txtsearch = new javax.swing.JTextField();
         btnDangnhap = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         lbltendangnhap7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbltendangnhap7.setText("Thành tiền");
 
@@ -65,7 +158,7 @@ public class ChiTietHoaDon extends javax.swing.JInternalFrame {
 
         txtMasp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblChitietHD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -81,7 +174,7 @@ public class ChiTietHoaDon extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblChitietHD);
 
         txtMaHD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -261,11 +354,7 @@ public class ChiTietHoaDon extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
-        if (txtsearch.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập mã sản phẩm!!");
-            txtsearch.requestFocus();
-            return;
-        }
+       
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
 
@@ -280,12 +369,12 @@ public class ChiTietHoaDon extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbltendangnhap10;
     private javax.swing.JLabel lbltendangnhap6;
     private javax.swing.JLabel lbltendangnhap7;
     private javax.swing.JLabel lbltendangnhap8;
     private javax.swing.JLabel lbltendangnhap9;
+    private javax.swing.JTable tblChitietHD;
     private javax.swing.JTextField txtDongia;
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtMasp;
@@ -299,7 +388,6 @@ public void checknull() {
         try {
 
             //check null
-            
             if (txtMasp.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Mã sản phẩm không được để trống");
                 txtMasp.requestFocus();
@@ -325,4 +413,16 @@ public void checknull() {
             JOptionPane.showMessageDialog(this, "Lỗi nhập thông tin!");
         }
     }
+
+//  public void showDetail() {
+//
+//        QLSP sp = ListSP.get(index);
+//
+//        txtmaHDCT.setText(sp.maHDCT);
+//        txtMasp.setText(sp.maSP);
+//        txt.setText(String.valueOf(sp.getNgaynhap()));
+//        txtSoluong.setText(String.valueOf(sp.soluong));
+//
+//        tblQLSP.setRowSelectionInterval(index, index);
+//    }
 }

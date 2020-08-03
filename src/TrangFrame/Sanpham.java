@@ -6,7 +6,17 @@
 package TrangFrame;
 
 import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +29,82 @@ public class Sanpham extends javax.swing.JInternalFrame {
      */
     public Sanpham() {
         initComponents();
+        
+         this.ListSP = new ArrayList<>();
+
+        this.conn = this.getConnection();
+        this.ListSP = this.fetchlist();
+        this.RenderTable(ListSP);
+
+    
+    }
+    
+    ArrayList<ClassSp> ListSP;
+    DefaultTableModel model;
+    
+    int index;
+    
+    protected String dbUsername, dbPassword;
+    
+    Connection conn;
+    
+    protected Connection getConnection() {
+        Connection conn = null;
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyBanHang";
+            
+            String dbUsername = "sa", dbPassword = "Aa123";
+            conn = DriverManager.getConnection(url, dbUsername, dbPassword);
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conn;
+        
+    }
+    
+    protected ArrayList<ClassSp> fetchlist() {
+        ArrayList<ClassSp> result = new ArrayList<>();
+        
+        String query = "select * from Sanpham";
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+//                MaSP ,TenSP ,SoLuong,DonGia ,NgaySanXuat
+                String masp = rs.getString("MaSP");
+                String tensp = rs.getString("TenSP");         
+                String Soluong = rs.getString("Soluong");
+                int Dongia = rs.getInt("Dongia");
+                Date Ngaynhap = rs.getDate("Ngaysanxuat");
+                result.add(new ClassSp(masp, tensp, Soluong, Dongia, Ngaynhap));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhanvien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+        
+    }
+    
+    public void RenderTable(ArrayList<ClassSp> data) {
+        model = (DefaultTableModel) this.tblQlSP.getModel();
+        model.setRowCount(0);
+        for (int i = 0; i < data.size(); i++) {
+            ClassSp kh = data.get(i);
+            model.addRow(new Object[]{
+                kh.getMaSP(),
+                kh.getTenSP(),
+                kh.getSoLuong(),
+                kh.getDonGia(),
+                kh.getNgayNhap()            
+            });
+            
+        }
     }
 
     /**
@@ -35,7 +121,7 @@ public class Sanpham extends javax.swing.JInternalFrame {
         txtTaikhoan = new javax.swing.JTextField();
         txtMatkhau = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblQlSP = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         lbltendangnhap1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -66,9 +152,12 @@ public class Sanpham extends javax.swing.JInternalFrame {
         txtMatkhau.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Sản phẩm");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblQlSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -84,11 +173,11 @@ public class Sanpham extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
+        jScrollPane1.setViewportView(tblQlSP);
+        if (tblQlSP.getColumnModel().getColumnCount() > 0) {
+            tblQlSP.getColumnModel().getColumn(0).setResizable(false);
+            tblQlSP.getColumnModel().getColumn(3).setResizable(false);
+            tblQlSP.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -288,10 +377,10 @@ public class Sanpham extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbltendangnhap;
     private javax.swing.JLabel lbltendangnhap1;
     private javax.swing.JLabel lbltendangnhap2;
+    private javax.swing.JTable tblQlSP;
     private javax.swing.JPasswordField txtMatkhau;
     private javax.swing.JTextField txtTaikhoan;
     private javax.swing.JTextField txtdongia;
@@ -324,7 +413,7 @@ public void checknull() {
                 txtdongia.requestFocus();
                 return;
             }
-
+            
             if (String.valueOf(txtsoluong).equals("")) {
                 JOptionPane.showMessageDialog(this, "Số lượng phải là số!");
                 txtsoluong.requestFocus();
@@ -334,7 +423,7 @@ public void checknull() {
                 txtsoluong.requestFocus();
                 return;
             }
-
+            
         } catch (HeadlessException | NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Lỗi nhập thông tin!");
         }
